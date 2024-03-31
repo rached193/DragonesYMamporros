@@ -1,0 +1,19 @@
+<div class="videojuegos-container">
+  <ul>
+  @if(gamesList$ | async; as gamesList) { @for (game of gamesList; track
+  $index){
+  <li  class="videojuego-item">
+    <img
+      [src]="game.cover?.url"
+      alt="{{ game.name }}"
+      class="videojuego-img"
+    />
+    <div class="videojuego-details">
+      <h3>{{ game.name }}</h3>
+      <p>Release Date: {{game.first_release_date*1000 | date }}</p>
+      <p>{{ game.summary }}</p>
+    </div>
+  </li >
+  } }
+</ul>
+</div>
