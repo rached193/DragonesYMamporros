@@ -17,8 +17,6 @@ export const authInterceptor: HttpInterceptorFn = (
     const accessToken = oauthService.getAccessToken();
     const clientId = oauthService.clientId;
 
-    console.log('hola');
-    console.log(accessToken, clientId);
     if (accessToken && clientId) {
       request = request.clone({
         setHeaders: {

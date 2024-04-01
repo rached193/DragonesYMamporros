@@ -3,7 +3,7 @@ export interface Games {
   name: string;
   summary: string;
   first_release_date: number;
-  cover: {
+  cover?: {
     url: string;
   };
 }

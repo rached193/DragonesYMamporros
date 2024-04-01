@@ -1,19 +1,50 @@
+<div class="pagination">
+  <button (click)="changeMonth(-1)">Previous Month</button>
+  <span>{{ currentMonth() | date : "MMMM yyyy" }}</span>
+  <button (click)="changeMonth(1)">Next Month</button>
+</div>
+
+<!-- @if (isLoading()) {
+  <div class="loader">Cargando...</div>
+} @else if (gamesList$ | async as gamesList; gamesList.length > 0) {
+  <div class="videojuegos-container">
+    <ul>
+      @for (game of gamesList) {
+        <li class="videojuego-item">
+          <img [src]="game.cover?.url" alt="{{ game.name }}" class="videojuego-img" loading="lazy"/>
+          <div class="videojuego-details">
+            <h3>{{ game.name }}</h3>
+            <p>Release Date: {{ game.first_release_date * 1000 | date }}</p>
+            <p>{{ game.summary }}</p>
+          </div>
+        </li>
+      }
+    </ul>
+  </div>
+} @else {
+  <div>No games found for this month.</div>
+} -->
+
+
 <div class="videojuegos-container">
   <ul>
-  @if(gamesList$ | async; as gamesList) { @for (game of gamesList; track
-  $index){
-  <li  class="videojuego-item">
-    <img
-      [src]="game.cover?.url"
-      alt="{{ game.name }}"
-      class="videojuego-img"
-    />
-    <div class="videojuego-details">
-      <h3>{{ game.name }}</h3>
-      <p>Release Date: {{game.first_release_date*1000 | date }}</p>
-      <p>{{ game.summary }}</p>
-    </div>
-  </li >
-  } }
-</ul>
+    @if(gamesList$ | async; as gamesList) { 
+      @for (game of gamesList; track $index){
+      <li class="videojuego-item">
+      <img
+        [src]="game.cover?.url"
+        alt="{{ game.name }}"
+        class="videojuego-img"
+        loading="lazy"
+      />
+      <div class="videojuego-details">
+        <h3>{{ game.name }}</h3>
+        <p>Release Date: {{ game.first_release_date * 1000 | date }}</p>
+        <p>{{ game.summary }}</p>
+      </div>
+    </li>
+    } } @else {
+    <p>No games found for this month.</p>
+    }
+  </ul>
 </div>
